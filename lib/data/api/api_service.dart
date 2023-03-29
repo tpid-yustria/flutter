@@ -5,7 +5,7 @@ import '../model/article.dart';
 
 class ApiService {
   static const String _baseUrl = "https://newsapi.org/v2/";
-  static const String _apiKey = "ed2659dc60d648359072291975cc7485";
+  static const String _apiKey = "91c469bc5a3d47e0ad63014ac6ee5155";
   static const String _country = 'id';
 
   Future<Articles> topHeadline() async {
