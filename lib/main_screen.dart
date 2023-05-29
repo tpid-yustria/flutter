@@ -5,7 +5,6 @@ import 'package:job_finder/screens/textscreens/test2.dart';
 import 'package:job_finder/screens/textscreens/test3.dart';
 import 'commons/bottom_tab_bar.dart';
 
-
 class MainScreen extends StatefulWidget {
   MainScreen({Key? key}) : super(key: key);
 
