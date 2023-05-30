@@ -40,7 +40,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
           ),
           buildTabItem(
             3,
-            Icon(Icons.favorite_outline),
+            Icon(Icons.account_circle_rounded),
           ),
         ],
       ),

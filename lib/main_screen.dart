@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:job_finder/screens/home/home_screen.dart';
 import 'package:job_finder/screens/textscreens/test1.dart';
 import 'package:job_finder/screens/textscreens/test2.dart';
-import 'package:job_finder/screens/textscreens/test3.dart';
+import 'package:job_finder/screens/textscreens/profile.dart';
 import 'commons/bottom_tab_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     Test1(),
     Test2(),
-    Test3(),
+    Profile(),
   ];
 
   @override
