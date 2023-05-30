@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:job_finder/service/api-login.dart';
-import 'package:job_finder/screens/login.dart';
+import 'package:job_finder/screens/auth/login.dart';
 import 'dart:convert';
 
 class Profile extends StatefulWidget {
@@ -16,16 +16,28 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   late SharedPreferences sharedPreferences;
   late String token;
-  void initState() {
-    super.initState();
-    _loadUserData();
-  }
+  String name='';
+  String email='';
 
-// method untuk mengambil data user dari SharedPreferences
   _loadUserData() async {
     sharedPreferences = await SharedPreferences.getInstance();
     token = sharedPreferences.getString('token').toString();
+    name = sharedPreferences.getString('userName').toString();
+    email = sharedPreferences.getString('userEmail').toString();
+    return [name, email];
   }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData().then((value) {
+      setState(() {
+        name = value[0];
+        email = value[1];
+      });
+    });
+  }
+
   _showMsg(String content) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(content)));
@@ -72,14 +84,14 @@ class _ProfileState extends State<Profile> {
               ),
               SizedBox(height: 10 * 2),
               Text(
-                'Yustria Akbar',
+                name,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(height: 10 * 0.5),
               Text(
-                'yustria@mailinator.com',
+                email,
                 style: TextStyle(
                   fontWeight: FontWeight.w100,
                 ),
@@ -134,9 +146,12 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                         Spacer(),
-                        Icon(
-                          LineAwesomeIcons.angle_right,
-                          size: kSpacingUnit.w * 2.5,
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              LineAwesomeIcons.angle_right,
+                              size: kSpacingUnit.w * 2.5,
+                            )
                         ),
                       ],
                     ),

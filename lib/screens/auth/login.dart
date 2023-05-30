@@ -153,24 +153,12 @@ class _LoginState extends State<Login> {
 
     if (response['status'] == 200) {
       // jika status respon dari server adalah 200, maka login berhasil
-      _showMsg(response['message']
-          .toString()); // menampilkan pesan berhasil dengan menggunakan method _showMsg()
-      SharedPreferences preferences = await SharedPreferences
-          .getInstance(); // membuat instance dari class SharedPreferences
-      await preferences.setInt(
-          "userId",
-          response['data']
-          ['id']); // menyimpan id user ke dalam SharedPreferences
-      await preferences.setString(
-          "userName",
-          response['data']
-          ['name']); // menyimpan nama user ke dalam SharedPreferences
-      await preferences.setString(
-          "userEmail",
-          response['data']
-          ['email']); // menyimpan email user ke dalam SharedPreferences
-      await preferences.setString("token",
-          response['token']); // menyimpan token user ke dalam SharedPreferences
+      _showMsg(response['message'].toString()); // menampilkan pesan berhasil dengan menggunakan method _showMsg()
+      SharedPreferences preferences = await SharedPreferences.getInstance(); // membuat instance dari class SharedPreferences
+      await preferences.setInt("userId", response['data']['id']); // menyimpan id user ke dalam SharedPreferences
+      await preferences.setString("userName", response['data']['name']); // menyimpan nama user ke dalam SharedPreferences
+      await preferences.setString("userEmail", response['data']['email']); // menyimpan email user ke dalam SharedPreferences
+      await preferences.setString("token", response['token']); // menyimpan token user ke dalam SharedPreferences
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         // melakukan perpindahan halaman ke halaman Home
         builder: (context) => MainScreen(),
@@ -181,8 +169,7 @@ class _LoginState extends State<Login> {
       'message']); // menampilkan pesan gagal dengan menggunakan method _showMsg()
     }
 
-    print(jsonDecode(res
-        .body)); // menampilkan body dari respon server dalam bentuk JSON pada console
+    print(jsonDecode(res.body)); // menampilkan body dari respon server dalam bentuk JSON pada console
     setState(() {
       // mengubah nilai variabel _isLoading menjadi false
       _isLoading = false;

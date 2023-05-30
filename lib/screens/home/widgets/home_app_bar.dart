@@ -15,14 +15,18 @@ class _HomeAPpBarState extends State<HomeAPpBar> {
   bool isLoading = false;
 
   late SharedPreferences sharedPreferences;
-  String name = " ";
+  var name = " ";
 
   int pageIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _loadUserData();
+    _loadUserData().then((value) {
+      setState(() {
+        name = value;
+      });
+    });
   }
   _loadUserData() async {
     setState(() {
@@ -30,6 +34,7 @@ class _HomeAPpBarState extends State<HomeAPpBar> {
     });
     sharedPreferences = await SharedPreferences.getInstance();
     name = sharedPreferences.getString('userName').toString();
+    return name;
   }
 
   Widget build(BuildContext context) {

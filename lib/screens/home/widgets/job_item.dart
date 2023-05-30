@@ -48,6 +48,7 @@ class JobItem extends StatelessWidget {
                 ],
               ),
               GestureDetector(
+                onTap: () {},
                 child: Container(
                   child: Icon(
                       job.is_mark == false
