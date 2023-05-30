@@ -2,6 +2,7 @@ import 'package:job_finder/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:job_finder/service/api-login.dart';
 import 'dart:convert';
+import 'register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -104,7 +105,7 @@ class _LoginState extends State<Login> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() == true) {
-                          _login(); //minjilinkin fingsi ligin siit simiwi inpit tidik null
+                          _login();
                         }
                       },
                       child: Text(
@@ -124,7 +125,12 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Dont have an account? "),
-                  TextButton(onPressed: () {}, child: Text("Sign Up"))
+                  TextButton(onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => Register(),
+                        ));
+                      },
+                      child: Text("Sign Up"))
                 ],
               )
             ],
